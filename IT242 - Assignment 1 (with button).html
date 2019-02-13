@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <script>
+           
+        </script>
+    </head>
+    <body>
+        <script>
+        function randomNumber(maxValue){
+            return Math.floor(Math.random() * maxValue);
+        }
+
+        
+        
+        var Names = [];
+        Names.push('Megan Six');
+        Names.push('Briann Jones');
+        Names.push('Danielle Goodman');
+        Names.push('Heather Hogsett');
+        Names.push('Bryan Wilt');
+        Names.push('Josh Humphreys');
+        Names.push('Tim Steele');
+        Names.push('Ashley Foster');
+        Names.push('Jackie Wellman');
+        Names.push('Chanisha Mendenhall');
+        Names.push('Drew Goodman');
+        Names.push('Brianna Kowalsky');
+        Names.push('Dianna Goodman');
+        Names.push('Allyson Bird');
+        Names.push('Amanda Barbour');
+        Names.push('Brett Barbour');
+        Names.push('Mitchell Goodman');
+        Names.push('Scott Barbour');
+
+        var lastNames = [];
+        var firstNames = [];
+
+        
+        function pickRandomName(ary)
+        {
+            return ary[randomNumber(ary.length)];
+        }
+
+        function breakNamesApart()
+        {
+            var inx = 0;
+            Names.forEach(function(fullName){
+                fullName = fullName.split(" ");
+                firstNames.push(fullName[0])
+                lastNames.push(fullName[1])
+            });
+        }
+
+        breakNamesApart();
+        var myName = pickRandomName(firstNames) + ' ' + pickRandomName(lastNames);
+        
+        console.log(myName);
+
+
+        </script>
+
+<h1>Random Name Generator</h1>
+<button onclick="myFunction()">Click For Instructions</button>
+
+<script>
+function myFunction() {
+  alert("Press F-12 or open developer console to view random name. Refresh page for new name.");
+}
+</script>
+    </body>
+</html>
