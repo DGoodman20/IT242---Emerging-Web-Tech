@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <title>The Library</title>
+
+</head>
+<script type="text/javascript">
+    class LibraryItem{
+        // add properties to this that hold the itemType and the title..
+        constuctor(itemType,title){
+            //this.property = argumentValue;
+            this.itemType = itemType;
+            this.title = title;
+        }
+    }
+    class Library {
+        // constructor gets called automatically when
+        // you instantiate a class (Library in this case)
+        constructor() {
+            // this.property = new empty array
+            this.items = [];
+        }
+        add(id) {
+            // get a pointer to the html form that 
+            // has the id of libraryForm
+            var frmItem = document.querySelector('#libraryForm');
+            // pass that form pointer into the buildItem function
+            // and get back an object with the items properties
+            // extracted from the form.
+            var item = this.buildItem(frmItem);
+            // add the item to the library of items.
+            this.items.push(item);
+            console.table(this.items);
+            this.render();
+            return false;
+        }
+        buildItem(frm) {
+            var itemTypes = frm.querySelector('#selItemType').selectedOptions;
+            // instead of creating an object using the {} instantiate the LibraryItem
+            // class, set the properties, and return the new instance.
+            return new LibraryItem(itemTypes[0].value, frm.title.value);
+        }
+        // for further reference information on javascript a good resource is 
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+        render(frmItem) {
+    const items = this.items.buildItem.map(function(item){
+      return <li> {item} </li>;
+            // this method should draw the mediaItems that are in the this.items
+            // collection and print them to the webpage.
+        }
+        renderItem(item) {};
+    }
+    var billsLibrary = new Library();
+</script>
+
+<body>
+    <h1>Our Library</h1>
+    <form id="libraryForm">
+        <label for="selItemType">Item Type</label>
+        <select name="itemType" id="selItemType">
+            <option value="book">Book</option>
+            <option value="movie">Movie</option>
+            <option value="game">Game</option>
+        </select>
+        <label for="txtTitle">Title</label>
+        <input type="text" name="title" id="txtTitle">
+
+        <input type="submit" name="btnAdd" value="Add" onClick="return billsLibrary.add()">
+    </form>
+
+    <ul id="libraryItems">
+
+    </ul>
+
+
+</body>
+
+</html>
