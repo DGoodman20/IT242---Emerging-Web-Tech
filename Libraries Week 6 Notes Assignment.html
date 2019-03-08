@@ -43,16 +43,48 @@
         // for further reference information on javascript a good resource is 
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
         render(frmItem) {
-    const items = this.items.buildItem.map(function(item)
-      return <li> {item} </li>;
+            var 
+ul = document.querySelector('#libraryItems');
+
+const 
+items = this.items.map(function(item){
+
+return 
+`<li>${item.title}</li>`;
+
+});
+
+
+ul.innerHTML =
+'';
+
+
+this.items.forEach((item)=>{
+
+    ul.appendChild(this.renderItem(item));
+
+});
+
+} 
+
             // this method should draw the mediaItems that are in the this.items
             // collection and print them to the webpage.
         }
-        renderItem(item) {};
-    }
+        renderItem(item) 
+        {
+            var 
+li = document.createElement('li');
+
+li.innerHTML =
+item.title;
+
+return 
+li;
+ 
+        };
+    
     var billsLibrary = new Library();
 </script>
-
 <body>
     <h1>Our Library</h1>
     <form id="libraryForm">
@@ -64,15 +96,9 @@
         </select>
         <label for="txtTitle">Title</label>
         <input type="text" name="title" id="txtTitle">
-
         <input type="submit" name="btnAdd" value="Add" onClick="return billsLibrary.add()">
     </form>
-
     <ul id="libraryItems">
-
     </ul>
-
-
 </body>
-
 </html>
